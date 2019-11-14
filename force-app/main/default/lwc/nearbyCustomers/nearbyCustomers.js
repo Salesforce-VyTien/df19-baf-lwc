@@ -5,10 +5,8 @@ import getNearbyCustomers from '@salesforce/apex/NearbyCustomerController.getNea
 export default class NearbyCustomers extends LightningElement {
 
     columns = [
-       { label: "Name", fieldName: "Name" }
+       { label: "Nearby Customers", fieldName: "Name" }
     ];
-
-    
 
     @track mapMarkers = [];
     @track center;
@@ -23,15 +21,14 @@ export default class NearbyCustomers extends LightningElement {
                 Longitude: data.fields.Location__Longitude__s.value, 
                 Latitude: data.fields.Location__Latitude__s.value
             }
-            this.centerStr = JSON.stringify(this.center);
         } else if (error) {
             // Handle Error
-            console.log(JSON.stringify(error));
         }
     }
 
     @wire(getNearbyCustomers, { center: "$center", count: 6 })
     wiredAccounts({ error, data }) {
+        //console.log(this.centerStr);
         if (data) {
             let mapAccounts = [];
             for (let i=0; i<data.length; i++) {
@@ -44,7 +41,6 @@ export default class NearbyCustomers extends LightningElement {
             this.mapMarkers = mapAccounts;
         } else if (error) {
             // Handle Error
-            console.log(error);
         }
 
     }

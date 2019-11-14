@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="nearbyCustomersImproved">
+    <apiVersion>46.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Nearby Customers Improved</masterLabel>
+    <description>Map of customers closest to this record</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <objects>
+                <object>Account</object>
+                <object>Lead</object>
+            </objects>
+            <property label="Geolocation Latitude" name="latField" type="String" default="" required="true" datasource="apex://LWCConfigurationObjectFieldsPicklist" description="Must be a decimal field that represents latitude"/>
+            <property label="Geolocation Longitude" name="lngField" type="String" default="" required="true" datasource="apex://LWCConfigurationObjectFieldsPicklist" description="Must be a decimal field that represents longitude"/>
+            <property label="Max Distance" description="Miles" name="maxDistance" type="Integer" default="2"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

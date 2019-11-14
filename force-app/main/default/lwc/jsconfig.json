@@ -5,6 +5,9 @@
         "paths": {
             "c/nearbyCustomers": [
                 "nearbyCustomers/nearbyCustomers.js"
+            ],
+            "c/nearbyCustomersImproved": [
+                "nearbyCustomersImproved/nearbyCustomersImproved.js"
             ]
         }
     },
